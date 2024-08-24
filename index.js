@@ -35,9 +35,9 @@ initalizeDBAndServer()
 
 
 app.post("/bookings",async (request,response)=>{
-    const {dateTime,price} = request.body
-    const createDocu=`INSERT INTO booking(date_time,price)VALUES(
-    "${dateTime}",${price}
+    const {areaOfTeaching,sessionTime,dateTime,price} = request.body
+    const createDocu=`INSERT INTO booking(date_time,session_time,price,area_of_teaching)VALUES(
+    "${dateTime}","${sessionTime}",${price},"${areaOfTeaching}"
     );`;
     const DBdata= await db.run(createDocu);
     response.status(200).json({message:"Booking Created Successfully",id:DBdata.lastID})
