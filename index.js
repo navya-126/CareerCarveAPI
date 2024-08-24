@@ -46,7 +46,7 @@ app.post("/bookings",async (request,response)=>{
 app.get("/mentors",async (request,response)=>{
   const {areaOfInterest=""} = request.query
   console.log(areaOfInterest)
-    const fetchDocu=`SELECT name,mentor_id FROM mentor WHERE areas_of_expertise LIKE "%${areaOfInterest}%" ;`;
+    const fetchDocu=`SELECT name,mentor_id,is_premium FROM mentor WHERE areas_of_expertise LIKE "%${areaOfInterest}%" ;`;
     const rows= await db.all(fetchDocu);
     response.status(200).json(rows)
 })
